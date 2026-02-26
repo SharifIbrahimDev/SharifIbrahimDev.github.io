@@ -1,65 +1,79 @@
-// Custom Cursor Follower
+// Custom Cursor Follower Enhanced
 const cursor = document.querySelector('.cursor-follower');
+let cursorActive = false;
 
 document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
+    
+    if (!cursorActive) {
+        cursor.style.opacity = '1';
+        cursorActive = true;
+    }
 });
 
-// Custom Cursor Styles in JS (Adding to CSS dynamically)
-const style = document.createElement('style');
-style.innerHTML = `
-    .cursor-follower {
-        width: 20px;
-        height: 20px;
-        border: 2px solid var(--primary-emerald);
-        border-radius: 50%;
-        position: fixed;
-        pointer-events: none;
-        z-index: 9999;
-        transition: transform 0.1s ease-out;
-        transform: translate(-50%, -50%);
-    }
-`;
-document.head.appendChild(style);
+// Cursor Interactions
+const interactiveElements = document.querySelectorAll('a, button, .project-card, .service-card, .skill-item');
+interactiveElements.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-large');
+    });
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-large');
+    });
+});
 
 // Intersection Observer for animations
 const observerOptions = {
-    threshold: 0.2
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            // Sequential animation for cards if needed
+            if(entry.target.classList.contains('project-grid') || entry.target.classList.contains('services-grid')) {
+                const children = entry.target.children;
+                Array.from(children).forEach((child, index) => {
+                    setTimeout(() => {
+                        child.classList.add('visible');
+                    }, index * 100);
+                });
+            }
         }
     });
 }, observerOptions);
 
-document.querySelectorAll('.project-card, .section-header, .skill-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'all 0.8s ease-out';
+// Observe elements
+document.querySelectorAll('section, .project-card, .service-card, .skill-item, .hero-content, .hero-visual').forEach(el => {
+    el.classList.add('reveal-item');
     observer.observe(el);
 });
-
-// Adding visibility class styles
-const visibilityStyle = document.createElement('style');
-visibilityStyle.innerHTML = `
-    .visible {
-        opacity: 1 !important;
-        transform: translateY(0) !important;
-    }
-`;
-document.head.appendChild(visibilityStyle);
 
 // Smooth scrolling for navigation
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
     });
+});
+
+// Dynamic Navbar opacity
+window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.glass-nav');
+    if (window.scrollY > 50) {
+        nav.style.padding = '15px 0';
+        nav.style.background = 'rgba(5, 5, 5, 0.9)';
+    } else {
+        nav.style.padding = '25px 0';
+        nav.style.background = 'rgba(5, 5, 5, 0.7)';
+    }
 });
