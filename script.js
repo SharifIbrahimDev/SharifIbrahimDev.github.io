@@ -5,7 +5,7 @@ let cursorActive = false;
 document.addEventListener('mousemove', (e) => {
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
-    
+
     if (!cursorActive) {
         cursor.style.opacity = '1';
         cursorActive = true;
@@ -13,7 +13,7 @@ document.addEventListener('mousemove', (e) => {
 });
 
 // Cursor Interactions
-const interactiveElements = document.querySelectorAll('a, button, .project-card, .service-card, .skill-item');
+const interactiveElements = document.querySelectorAll('a, button, input, textarea, .project-card, .service-card, .skill-item, .testimonial-card, .stats-card');
 interactiveElements.forEach(el => {
     el.addEventListener('mouseenter', () => {
         cursor.classList.add('cursor-large');
@@ -34,7 +34,8 @@ const observer = new IntersectionObserver((entries) => {
         if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             // Sequential animation for cards if needed
-            if(entry.target.classList.contains('project-grid') || entry.target.classList.contains('services-grid')) {
+            const gridClasses = ['project-grid', 'services-grid', 'stats-container', 'testimonials-grid', 'skill-cloud'];
+            if (gridClasses.some(cls => entry.target.classList.contains(cls))) {
                 const children = entry.target.children;
                 Array.from(children).forEach((child, index) => {
                     setTimeout(() => {
@@ -47,7 +48,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe elements
-document.querySelectorAll('section, .project-card, .service-card, .skill-item, .hero-content, .hero-visual').forEach(el => {
+document.querySelectorAll('section, .project-card, .service-card, .skill-item, .testimonial-card, .stats-card, .hero-content, .hero-visual, .form-container').forEach(el => {
     el.classList.add('reveal-item');
     observer.observe(el);
 });

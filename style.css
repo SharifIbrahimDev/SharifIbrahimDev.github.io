@@ -220,6 +220,26 @@ h1 {
     color: white;
 }
 
+.resume-btn {
+    padding: 16px 24px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    background: rgba(251, 191, 36, 0.1);
+    color: var(--accent-gold);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resume-btn:hover {
+    background: rgba(251, 191, 36, 0.2);
+    border-color: var(--accent-gold);
+    transform: translateY(-5px);
+}
+
 .secondary-btn {
     border: 1px solid var(--glass-border);
     color: var(--text-white);
@@ -492,6 +512,169 @@ h1 {
 .visible {
     opacity: 1 !important;
     transform: translateY(0) !important;
+}
+
+/* GitHub Stats elite */
+.github-stats {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.stats-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    padding: 20px;
+    border-radius: 32px;
+    transition: var(--transition-smooth);
+    box-shadow: var(--card-shadow);
+}
+
+.stats-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 16px;
+}
+
+.stats-card:hover {
+    border-color: var(--primary-emerald);
+    transform: translateY(-10px);
+}
+
+/* Testimonials elite */
+.testimonials {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    padding: 60px 40px;
+    border-radius: 32px;
+    position: relative;
+    transition: var(--transition-smooth);
+}
+
+.quote-icon {
+    font-size: 30px;
+    color: var(--primary-emerald);
+    margin-bottom: 24px;
+    opacity: 0.5;
+}
+
+.testimonial-card p {
+    font-size: 18px;
+    line-height: 1.8;
+    font-style: italic;
+    margin-bottom: 30px;
+    color: var(--text-white);
+}
+
+.client-info strong {
+    display: block;
+    font-size: 18px;
+    color: var(--accent-gold);
+}
+
+.client-info span {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Contact Form elite */
+.contact-form-section {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.glass-form {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    padding: 60px;
+    border-radius: 32px;
+    backdrop-filter: blur(20px);
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--primary-emerald);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: white;
+    font-family: inherit;
+    font-size: 16px;
+    transition: var(--transition-smooth);
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-emerald);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--primary-emerald);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px -10px var(--primary-emerald);
 }
 
 /* Animations */
