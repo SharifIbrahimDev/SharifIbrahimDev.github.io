@@ -677,6 +677,53 @@ h1 {
     box-shadow: 0 10px 30px -10px var(--primary-emerald);
 }
 
+/* Education elite */
+.education {
+    padding: 100px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.education-container {
+    display: flex;
+    justify-content: center;
+}
+
+.education-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    padding: 50px 40px;
+    border-radius: 32px;
+    text-align: center;
+    max-width: 600px;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.education-card i {
+    font-size: 40px;
+    color: var(--accent-gold);
+}
+
+.education-card h3 {
+    font-size: 24px;
+    color: var(--text-white);
+}
+
+.education-card p {
+    font-size: 16px;
+    color: var(--text-muted);
+}
+
+.education-card:hover {
+    border-color: var(--accent-gold);
+    background: rgba(251, 191, 36, 0.03);
+    transform: scale(1.05);
+}
+
 /* Animations */
 @keyframes float {
     0% {
