@@ -398,6 +398,59 @@ h1 {
         display: none;
         /* Add a hamburger menu if needed, but keeping it clean for now */
     }
+
+    .hero {
+        padding: 100px 20px 40px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    .about,
+    .services,
+    .projects,
+    .github-stats,
+    .testimonials,
+    .education,
+    .contact-form-section {
+        padding: 60px 20px;
+    }
+
+    .glass-form {
+        padding: 30px 20px;
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+    }
+
+    .hero-btns {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .hero-btns a {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .about-card,
+    .service-card,
+    .testimonial-card,
+    .education-card {
+        padding: 30px 20px;
+    }
+
+    .stats-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+    }
 }
 
 .project-grid {
