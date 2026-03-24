@@ -70,6 +70,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Dynamic Navbar opacity
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('.glass-nav');
+    const scrollProgress = document.querySelector('.scroll-progress');
+    
+    // Navbar effect
     if (window.scrollY > 50) {
         nav.style.padding = '15px 0';
         nav.style.background = 'rgba(5, 5, 5, 0.9)';
@@ -77,4 +80,31 @@ window.addEventListener('scroll', () => {
         nav.style.padding = '25px 0';
         nav.style.background = 'rgba(5, 5, 5, 0.7)';
     }
+
+    // Scroll progress bar
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
+    scrollProgress.style.width = scrolled + "%";
+});
+
+// Mobile Menu Toggle
+const mobileToggle = document.querySelector('.mobile-toggle');
+const navLinks = document.querySelector('.nav-links');
+const navLinksItems = document.querySelectorAll('.nav-links a');
+
+mobileToggle.addEventListener('click', () => {
+    mobileToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    // Prevent scrolling when menu is open
+    document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : 'auto';
+});
+
+// Close mobile menu when a link is clicked
+navLinksItems.forEach(item => {
+    item.addEventListener('click', () => {
+        mobileToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    });
 });
