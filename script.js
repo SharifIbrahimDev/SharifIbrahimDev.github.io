@@ -108,3 +108,17 @@ navLinksItems.forEach(item => {
         document.body.style.overflow = 'auto';
     });
 });
+
+// Force PDF viewing on live site
+const cvLink = document.querySelector('.resume-btn');
+if (cvLink) {
+    cvLink.addEventListener('click', (e) => {
+        const isLive = window.location.hostname.includes('github.io');
+        if (isLive) {
+            e.preventDefault();
+            const pdfUrl = window.location.origin + window.location.pathname.replace(/\/$/, '') + '/resume.pdf';
+            const viewerUrl = `https://docs.google.com/viewer?url=${encodeURIComponent(pdfUrl)}&embedded=true`;
+            window.open(viewerUrl, '_blank');
+        }
+    });
+}
